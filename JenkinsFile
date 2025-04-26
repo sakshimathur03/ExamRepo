@@ -17,7 +17,7 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 script {
-                    // Push the image to Docker Hub without requiring credentials for a public repo
+                    // Push the image to Docker Hub
                     docker.image("${IMAGE_NAME}").push()
                 }
             }
@@ -26,10 +26,10 @@ pipeline {
 
     post {
         success {
-            echo '✅ Docker image pushed successfully to Docker Hub!'
+            echo 'Docker image pushed successfully to Docker Hub!'
         }
         failure {
-            echo '❌ Docker image push failed.'
+            echo 'Docker image push failed.'
         }
     }
 }
